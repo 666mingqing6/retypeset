@@ -32,3 +32,5 @@ dist-final/
 
 # 备用素材
 _disabled-langs/
+dist-embed/
+dist-*/
