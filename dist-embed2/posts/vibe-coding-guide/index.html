@@ -1,0 +1,415 @@
+<!DOCTYPE html><html lang="zh-CN" class="font-sans scroll-smooth"> <head><!-- Basic Info --><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><link rel="icon" type="image/svg+xml" href="/icons/favicon.svg"><title>Vibe Coding 入门：概念拆解与国内主流 AI 编程工具盘点 | Lumoes Blog</title><meta name="description" content="从&#34;大脑与手脚&#34;的比喻出发讲清 Vibe Coding 是什么，并盘点 8 款国内主流 AI 编程工具的形态、免费政策与适用场景。"><meta name="author" content="Lumoes"><meta name="generator" content="Astro v6.1.5"><meta name="theme-color" content="oklch(96% 0.005 298)"><!-- Preload --><link rel="preload" href="/fonts/EarlySummer-VF-Split/EarlySummer-VF-Subset.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/Snell-Black-SF.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/Snell-Bold-SF.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/STIX-VF.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/STIX-Italic-VF.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/_astro/katex.min.HM2DiD67.css" media="print" onload="this.media='all'"><!-- Site Links --><link rel="canonical" href="https://retypeset.pages.dev/posts/vibe-coding-guide/"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" href="/rss.xml" type="application/rss+xml" title="RSS Feed"><link rel="alternate" href="/atom.xml" type="application/atom+xml" title="Atom Feed"><link rel="alternate" href="https://retypeset.pages.dev" hreflang="zh"><link rel="alternate" href="https://retypeset.pages.dev/de/" hreflang="de"><link rel="alternate" href="https://retypeset.pages.dev/en/" hreflang="en"><link rel="alternate" href="https://retypeset.pages.dev/es/" hreflang="es"><link rel="alternate" href="https://retypeset.pages.dev/fr/" hreflang="fr"><link rel="alternate" href="https://retypeset.pages.dev/ja/" hreflang="ja"><link rel="alternate" href="https://retypeset.pages.dev/ko/" hreflang="ko"><link rel="alternate" href="https://retypeset.pages.dev/pl/" hreflang="pl"><link rel="alternate" href="https://retypeset.pages.dev/pt/" hreflang="pt"><link rel="alternate" href="https://retypeset.pages.dev/ru/" hreflang="ru"><link rel="alternate" href="https://retypeset.pages.dev" hreflang="zh"><link rel="alternate" href="https://retypeset.pages.dev/zh-tw/" hreflang="zh-TW"><!-- Open Graph --><meta property="og:type" content="article"><meta property="og:url" content="https://retypeset.pages.dev/posts/vibe-coding-guide/"><meta property="og:title" content="Vibe Coding 入门：概念拆解与国内主流 AI 编程工具盘点 | Lumoes Blog"><meta property="og:description" content="从&#34;大脑与手脚&#34;的比喻出发讲清 Vibe Coding 是什么，并盘点 8 款国内主流 AI 编程工具的形态、免费政策与适用场景。"><meta property="og:image" content="https://retypeset.pages.dev/og/vibe-coding-zh.png"><meta name="twitter:card" content="summary_large_image"><!-- Site Verification --><!-- Global View Transition --><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="none"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BOHegxVA.js"></script><!-- Theme Toggle --><script>(function(){const defaultMode = "auto";
+const lightMode = "oklch(96% 0.005 298)";
+const darkMode = "oklch(22% 0.005 298)";
+const reduceMotion = false;
+
+(function () {
+  // Check if current theme is dark
+  // Priority: localStorage theme > default theme > system preference
+  function isCurrentDark() {
+    const currentTheme = localStorage.getItem('theme')
+    if (currentTheme) {
+      return currentTheme === 'dark'
+    }
+
+    if (defaultMode !== 'auto') {
+      return defaultMode === 'dark'
+    }
+
+    // If defaultMode is auto, follow system preference
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+  }
+
+  // Initialize theme
+  function initTheme(doc = document) {
+    const isDark = isCurrentDark()
+    doc.documentElement.classList.toggle('dark', isDark)
+
+    // Update meta theme-color tag
+    const metaThemeColor = doc.head.querySelector('meta[name="theme-color"]')
+    if (metaThemeColor) {
+      metaThemeColor.setAttribute('content', isDark ? darkMode : lightMode)
+    }
+  }
+
+  // Check and init motion preference
+  // Condition: theme config || system preference || browser capability
+  function initMotionPref(doc = document) {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const supportsViewTransitions = 'startViewTransition' in doc
+    const shouldReduceMotion = reduceMotion || prefersReducedMotion || !supportsViewTransitions
+
+    doc.documentElement.classList.toggle('reduce-motion', shouldReduceMotion)
+  }
+
+  // Update theme before page transition to prevent flashing
+  document.addEventListener('astro:before-swap', ({ newDocument }) => {
+    initTheme(newDocument)
+    initMotionPref(newDocument)
+  })
+
+  // Initialize theme on first load
+  initTheme()
+  initMotionPref()
+})()
+})();</script><!-- Google Analytics --><!-- Define gtag on window object for proper Partytown forwarding --><!-- See https://github.com/QwikDev/partytown/issues/382 --><!-- Umami Analytics --><link rel="stylesheet" href="/_astro/Layout.AFANaZAy.css"><script type="module" src="/_astro/page.DlJ3fynU.js"></script>
+<script>!(function(w,p,f,c){if(!window.crossOriginIsolated && !navigator.serviceWorker) return;c=w[p]=Object.assign(w[p]||{},{"lib":"/~partytown/","debug":false});c[f]=(c[f]||[]).concat(["dataLayer.push","gtag"])})(window,'partytown','forward');/* Partytown 0.11.2 - MIT QwikDev */
+const tp={preserveBehavior:!1},ep=e=>{if("string"==typeof e)return[e,tp];const[n,r=tp]=e;return[n,{...tp,...r}]},n=Object.freeze((t=>{const e=new Set;let n=[];do{Object.getOwnPropertyNames(n).forEach((t=>{"function"==typeof n[t]&&e.add(t)}))}while((n=Object.getPrototypeOf(n))!==Object.prototype);return Array.from(e)})());!function(t,r,o,i,a,s,c,l,d,p,u=t,f){function h(){f||(f=1,"/"==(c=(s.lib||"/~partytown/")+(s.debug?"debug/":""))[0]&&(d=r.querySelectorAll('script[type="text/partytown"]'),i!=t?i.dispatchEvent(new CustomEvent("pt1",{detail:t})):(l=setTimeout(v,(null==s?void 0:s.fallbackTimeout)||1e4),r.addEventListener("pt0",w),a?y(1):o.serviceWorker?o.serviceWorker.register(c+(s.swPath||"partytown-sw.js"),{scope:c}).then((function(t){t.active?y():t.installing&&t.installing.addEventListener("statechange",(function(t){"activated"==t.target.state&&y()}))}),console.error):v())))}function y(e){p=r.createElement(e?"script":"iframe"),t._pttab=Date.now(),e||(p.style.display="block",p.style.width="0",p.style.height="0",p.style.border="0",p.style.visibility="hidden",p.setAttribute("aria-hidden",!0)),p.src=c+"partytown-"+(e?"atomics.js?v=0.11.2":"sandbox-sw.html?"+t._pttab),r.querySelector(s.sandboxParent||"body").appendChild(p)}function v(n,o){for(w(),i==t&&(s.forward||[]).map((function(n){const[r]=ep(n);delete t[r.split(".")[0]]})),n=0;n<d.length;n++)(o=r.createElement("script")).innerHTML=d[n].innerHTML,o.nonce=s.nonce,r.head.appendChild(o);p&&p.parentNode.removeChild(p)}function w(){clearTimeout(l)}s=t.partytown||{},i==t&&(s.forward||[]).map((function(r){const[o,{preserveBehavior:i}]=ep(r);u=t,o.split(".").map((function(e,r,o){var a;u=u[o[r]]=r+1<o.length?u[o[r]]||(a=o[r+1],n.includes(a)?[]:{}):(()=>{let e=null;if(i){const{methodOrProperty:n,thisObject:r}=((t,e)=>{let n=t;for(let t=0;t<e.length-1;t+=1)n=n[e[t]];return{thisObject:n,methodOrProperty:e.length>0?n[e[e.length-1]]:void 0}})(t,o);"function"==typeof n&&(e=(...t)=>n.apply(r,...t))}return function(){let n;return e&&(n=e(arguments)),(t._ptf=t._ptf||[]).push(o,arguments),n}})()}))})),"complete"==r.readyState?h():(t.addEventListener("DOMContentLoaded",h),t.addEventListener("load",h))}(window,document,navigator,top,window.crossOriginIsolated);;(e=>{e.addEventListener("astro:before-swap",e=>{let r=document.body.querySelector("iframe[src*='/~partytown/']");if(r)e.newDocument.body.append(r)})})(document);</script><style>[data-astro-transition-scope="astro-qtjagq3i-1"] { view-transition-name: post-vibe-coding-guide-zh; }@layer astro { ::view-transition-old(post-vibe-coding-guide-zh) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(post-vibe-coding-guide-zh) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(post-vibe-coding-guide-zh) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(post-vibe-coding-guide-zh) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-qtjagq3i-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-qtjagq3i-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-qtjagq3i-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-qtjagq3i-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-qtjagq3i-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-qtjagq3i-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-qtjagq3i-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-qtjagq3i-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-lit7wibv-2"] { view-transition-name: time-vibe-coding-guide-zh; }@layer astro { ::view-transition-old(time-vibe-coding-guide-zh) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(time-vibe-coding-guide-zh) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(time-vibe-coding-guide-zh) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(time-vibe-coding-guide-zh) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-lit7wibv-2"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-lit7wibv-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-lit7wibv-2"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-lit7wibv-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-lit7wibv-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-lit7wibv-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-lit7wibv-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-lit7wibv-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-wif6pdce-3"] { view-transition-name: site-title-zh; }@layer astro { ::view-transition-old(site-title-zh) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(site-title-zh) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(site-title-zh) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(site-title-zh) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-wif6pdce-3"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-wif6pdce-3"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-wif6pdce-3"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-wif6pdce-3"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-wif6pdce-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-wif6pdce-3"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-wif6pdce-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-wif6pdce-3"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head><body> <div class="mx-auto max-w-205.848 min-h-vh w-full min-h-dvh" p="x-[min(7.25vw,3.731rem)] y-10" lg="mx-[max(5.75rem,calc(50vw-34.25rem))] my-20 max-w-[min(calc(75vw-16rem),44rem)] min-h-full p-0"> <header class="lg:uno-desktop-column lg:top-20 cjk:tracking-wide mb-10.8"> <h2 class="font-bold font-title mb-2.8 mt-3 text-5.375 c-secondary lg:mb-1.8 lg:mt-0 lg:text-9 lg:c-primary">  <div class="box-content inline-block pr-1" data-disable-theme-toggle-transition data-astro-transition-scope="astro-wif6pdce-3"> <a id="site-title-link" href="/"> Lumoes Blog </a> </div> </h2> <div aria-hidden="true" class="text-3.5 c-secondary font-navbar lg:text-4 op-0 lg:op-100">Lumoes的长文档博客</div> </header> <nav aria-label="Site Navigation" class="mb-10.5 text-3.6 font-semibold leading-2.45em font-navbar lg:uno-desktop-column lg:text-4 lg:bottom-[min(9.04rem+3.85vw,12.5rem)] cjk:tracking-wide hidden lg:block"> <ul> <li> <a href="/" class="highlight-static c-primary font-bold after:bottom-0.7em"> 文章 </a> </li><li> <a href="/tags/" class="highlight-hover transition-[colors,font-weight] after:bottom-0.7em hover:c-primary hover:font-bold"> 标签 </a> </li><li> <a href="/about/" class="highlight-hover transition-[colors,font-weight] after:bottom-0.7em hover:c-primary hover:font-bold"> 关于 </a> </li> </ul> </nav> <main class="mb-12">  <article class="heti"> <div class="relative"> <!-- Go Back Button On Desktop --> <button id="back-button" class="hidden" lg="absolute left--10 top-3.8 block aspect-square w-4.5 c-secondary/60 transition-colors ease-out hover:c-primary active:scale-90!" type="button" aria-label="Go back"> <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+  <path d="M17.8.7L4,12l13.8,11.4.7-.9L7.2,12,18.5,1.5l-.7-.8Z" />
+</svg> </button> <!-- Go Back Script >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> --> <script type="module">function n(t){if(!(t.target instanceof Element)||!t.target.closest("#back-button"))return;if(window.history.length>1){window.history.back();return}const e=document.getElementById("site-title-link");e&&e.click()}document.addEventListener("click",n);</script> <!-- Title --> <h1 class="post-title"> <span data-disable-theme-toggle-transition data-astro-transition-scope="astro-qtjagq3i-1"> Vibe Coding 入门：概念拆解与国内主流 AI 编程工具盘点 </span> </h1> </div> <!-- Date --> <div id="post-date" class="mb-17.2 block c-primary font-time" data-disable-theme-toggle-transition data-astro-transition-scope="astro-lit7wibv-2"> <!-- published date --><time datetime="2026-11-03"> 2026-11-03 </time> <!-- updated date -->  <!-- reading time --> <span class="ml-1.75"> 13 min
+</span> </div> <!-- TOC --> <div id="toc-container" class="mb-6 uno-round-border bg-secondary/5 2xl:fixed 2xl:left-0 2xl:top-44.5 2xl:max-w-[min(calc(50vw-38rem),13rem)] 2xl:border-none 2xl:bg-secondary/0"><input type="checkbox" id="toc-toggle" hidden><div class="relative h-12 w-full"><label for="toc-toggle" class="absolute inset-0 flex cursor-pointer items-center 2xl:static 2xl:flex 2xl:c-secondary/60 2xl:transition-colors 2xl:ease-out 2xl:hover:c-primary"><span id="toc-mobile-text">目录</span><svg viewBox="0 0 24 24" id="toc-desktop-icon" aria-hidden="true" class="ml-4 hidden aspect-square w-4.2 2xl:mt-4 2xl:block 2xl:origin-center 2xl:active:scale-90!" fill="currentColor">
+  <path d="M22.2 2.3H1.8V4h19.9zM22.2 20H1.8v1.7h19.9zM15.5 11.2H1.8v1.6H15z" />
+</svg></label></div><div id="toc-accordion-wrapper"><nav id="toc-accordion-content" aria-label="Table of Contents"><ul id="toc-links-list"><li class="ml-0"><a href="#一vibe-coding-是什么" class="no-heti toc-links-h2">一、Vibe Coding 是什么</a></li><li class="ml-0"><a href="#二vibe-coding-的基础大脑与手脚" class="no-heti toc-links-h2">二、Vibe Coding 的基础：大脑与手脚</a></li><li class="ml-0"><a href="#三两种产品形态" class="no-heti toc-links-h2">三、两种产品形态</a></li><li class="ml-0"><a href="#四国内主流工具盘点" class="no-heti toc-links-h2">四、国内主流工具盘点</a></li><li class="ml-4"><a href="#41-ide--云端-ide" class="no-heti toc-links-h3">4.1 IDE / 云端 IDE</a></li><li class="ml-8"><a href="#-trae" class="no-heti toc-links-h4"> TRAE</a></li><li class="ml-8"><a href="#-qoder-cn原通义灵码" class="no-heti toc-links-h4"> Qoder CN（原通义灵码）</a></li><li class="ml-8"><a href="#-豆包-marscode" class="no-heti toc-links-h4"> 豆包 MarsCode</a></li><li class="ml-4"><a href="#42-ide-插件" class="no-heti toc-links-h3">4.2 IDE 插件</a></li><li class="ml-8"><a href="#-腾讯云-codebuddy" class="no-heti toc-links-h4"> 腾讯云 CodeBuddy</a></li><li class="ml-8"><a href="#-文心快码comate" class="no-heti toc-links-h4"> 文心快码（Comate）</a></li><li class="ml-8"><a href="#-华为云-codearts码道" class="no-heti toc-links-h4"> 华为云 CodeArts（码道）</a></li><li class="ml-8"><a href="#-codegeex" class="no-heti toc-links-h4"> CodeGeeX</a></li><li class="ml-8"><a href="#-fitten-code" class="no-heti toc-links-h4"> Fitten Code</a></li><li class="ml-4"><a href="#43-关于这些内嵌预览" class="no-heti toc-links-h3">4.3 关于这些内嵌预览</a></li><li class="ml-0"><a href="#五关于免费的正确姿势" class="no-heti toc-links-h2">五、关于”免费”的正确姿势</a></li><li class="ml-0"><a href="#六进阶玩法大脑与手脚分离" class="no-heti toc-links-h2">六、进阶玩法：大脑与手脚分离</a></li></ul></nav></div></div><script type="module">const s=window.matchMedia("(min-width: 1536px)");let t=!1,n=null;function c(){const o=document.getElementById("toc-links-list");if(!o){t=!1;return}const e=o.querySelector("a:target-current");e&&e!==n&&(e.scrollIntoView({behavior:"smooth",block:"nearest"}),n=e),t=!1}function l(){!t&&s.matches&&(window.requestAnimationFrame(c),t=!0)}function i(){t=!1,n=null,!(!document.getElementById("toc-links-list")||!CSS.supports("selector(:target-current)"))&&document.addEventListener("scroll",l,{passive:!0})}function r(){document.removeEventListener("scroll",l),n=null}document.addEventListener("astro:page-load",i);document.addEventListener("astro:before-swap",r);</script> <!-- Content --> <div id="post-content"> <p>在科技的发展下，AI 逐渐进入普通人的日常生活，想必大家只要不是山顶洞人，都应该知道 AI 与自己的生活有多么密切相关。那么想必大家也应该对 AI 感兴趣，想学学 Vibe Coding——本期教程零基础，带你开始入门。</p>
+<p>在正式开始用 AI 进行 Vibe Coding 之前，我们首先需要了解一些基本概念。</p>
+<h2 id="一vibe-coding-是什么">一、Vibe Coding 是什么<a href="#一vibe-coding-是什么" class="heading-anchor-link" aria-label="Link to 一、Vibe Coding 是什么"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M2.6 21.4c2 2 5.9 2.9 8.9 0l3.5-3.5-1-1-3.5 3.5c-1.4 1.4-4.2 1.9-6.4-.3s-1.8-5-.3-6.4l3.5-3.5-1-1-3.5 3.5c-3 3-2 6.9 0 8.9ZM21.4 2.6c2 2 2.9 5.9 0 8.9L17.9 15l-1-1 3.5-3.5c1.4-1.4 1.9-4.2-.3-6.4s-5-1.8-6.4-.3l-3.5 3.5-1-1 3.5-3.5c3-3 6.9-2 8.9 0Z"></path><path d="m8.01 14.97 6.93-6.93 1.061 1.06-6.93 6.93z"></path></svg></a></h2>
+<blockquote class="admonition-note"><span class="admonition-title">一句话定义</span><p>Vibe Coding（氛围编程）是一种以自然语言描述意图、由 AI 生成并迭代代码的软件开发新范式。它的核心，是让开发者的精力从”逐行敲代码”转向”表达需求与把控方向”。</p><p>也就是说，程序员从手敲代码中解放出来，转换成指挥 AI 工作的角色。</p></blockquote>
+<h2 id="二vibe-coding-的基础大脑与手脚">二、Vibe Coding 的基础：大脑与手脚<a href="#二vibe-coding-的基础大脑与手脚" class="heading-anchor-link" aria-label="Link to 二、Vibe Coding 的基础：大脑与手脚"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M2.6 21.4c2 2 5.9 2.9 8.9 0l3.5-3.5-1-1-3.5 3.5c-1.4 1.4-4.2 1.9-6.4-.3s-1.8-5-.3-6.4l3.5-3.5-1-1-3.5 3.5c-3 3-2 6.9 0 8.9ZM21.4 2.6c2 2 2.9 5.9 0 8.9L17.9 15l-1-1 3.5-3.5c1.4-1.4 1.9-4.2-.3-6.4s-5-1.8-6.4-.3l-3.5 3.5-1-1 3.5-3.5c3-3 6.9-2 8.9 0Z"></path><path d="m8.01 14.97 6.93-6.93 1.061 1.06-6.93 6.93z"></path></svg></a></h2>
+<p>顾名思义，我们要用 AI 进行代码开发，首先就需要有一个 AI 大模型来作为 <strong>“大脑”</strong> 。</p>
+<p>但只有大脑还不够，我们还需要给它 <strong>“手脚”</strong> 。</p>
+<details><summary>为什么”手脚”不可省略？</summary><p>传统的 AI 只是一个对话流：用户输入一段文字，AI 回复一段文字。</p><p>比如说，你想修改一个文件实现某种功能，单纯的对话式 AI 只能告诉你”该怎么去做”、“如何去做”、“该修改什么”——它给的是<strong>说明书</strong>，不是<strong>结果</strong>。</p><p>因此为了解决这种困境，就有了 Agent，让 AI 能够自主行动。</p><p>在”大脑—手脚”的比喻里，“手脚”指的是能实际执行操作的工具和 AI 代理（Agent）。</p></details>
+<p>于是整个结构可以拆成两半：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>角色</th><th>承担者</th><th>职责</th></tr></thead><tbody><tr><td><strong>大脑</strong></td><td>AI 大模型</td><td>理解意图、生成内容（思考）</td></tr><tr><td><strong>手脚</strong></td><td>工具与 Agent</td><td>执行具体操作：读写文件、运行命令、提交代码</td></tr></tbody></table>
+<p>而把大脑与手脚结合在一起，形成一个完整的 AI 编程工作流——我们就把它叫作”Vibe Coding”。</p>
+<blockquote class="admonition-tip"><span class="admonition-title">TIP</span><p>这个比喻的实用价值在于：<strong>大脑和手脚是可以分开选的</strong>。同一个模型可以接不同的 IDE，不同的模型也可以接同一套 CLI。</p></blockquote>
+<h2 id="三两种产品形态">三、两种产品形态<a href="#三两种产品形态" class="heading-anchor-link" aria-label="Link to 三、两种产品形态"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M2.6 21.4c2 2 5.9 2.9 8.9 0l3.5-3.5-1-1-3.5 3.5c-1.4 1.4-4.2 1.9-6.4-.3s-1.8-5-.3-6.4l3.5-3.5-1-1-3.5 3.5c-3 3-2 6.9 0 8.9ZM21.4 2.6c2 2 2.9 5.9 0 8.9L17.9 15l-1-1 3.5-3.5c1.4-1.4 1.9-4.2-.3-6.4s-5-1.8-6.4-.3l-3.5 3.5-1-1 3.5-3.5c3-3 6.9-2 8.9 0Z"></path><path d="m8.01 14.97 6.93-6.93 1.061 1.06-6.93 6.93z"></path></svg></a></h2>
+<p>了解了 Vibe Coding 是什么，我们就能正式开始介绍一些 AI 编程工具了。</p>
+<p>因为 AI 的市场很大，所以各大厂商也开始逐渐推行起自己的编程工具——也就是把”模型的大脑”与”手脚”结合在一起的一个<strong>载体</strong>。</p>
+<p>不过这个载体也分一些类型，主要可以分为两大类：</p>
+<ol>
+<li><strong>有图形操作界面的</strong>（IDE / 云端 IDE）</li>
+<li><strong>直接命令行 CLI 的</strong></li>
+</ol>
+<blockquote class="admonition-note"><span class="admonition-title">NOTE</span><p>它们本质其实没有区别，只是前者加了一个图形界面，更便于操作使用而已。判断一个工具好不好，看的是它背后接了哪个模型、装了什么手脚，而不是它长得像不像 IDE。</p></blockquote>
+<h2 id="四国内主流工具盘点">四、国内主流工具盘点<a href="#四国内主流工具盘点" class="heading-anchor-link" aria-label="Link to 四、国内主流工具盘点"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M2.6 21.4c2 2 5.9 2.9 8.9 0l3.5-3.5-1-1-3.5 3.5c-1.4 1.4-4.2 1.9-6.4-.3s-1.8-5-.3-6.4l3.5-3.5-1-1-3.5 3.5c-3 3-2 6.9 0 8.9ZM21.4 2.6c2 2 2.9 5.9 0 8.9L17.9 15l-1-1 3.5-3.5c1.4-1.4 1.9-4.2-.3-6.4s-5-1.8-6.4-.3l-3.5 3.5-1-1 3.5-3.5c3-3 6.9-2 8.9 0Z"></path><path d="m8.01 14.97 6.93-6.93 1.061 1.06-6.93 6.93z"></path></svg></a></h2>
+<h3 id="41-ide--云端-ide">4.1 IDE / 云端 IDE<a href="#41-ide--云端-ide" class="heading-anchor-link" aria-label="Link to 4.1 IDE / 云端 IDE"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M2.6 21.4c2 2 5.9 2.9 8.9 0l3.5-3.5-1-1-3.5 3.5c-1.4 1.4-4.2 1.9-6.4-.3s-1.8-5-.3-6.4l3.5-3.5-1-1-3.5 3.5c-3 3-2 6.9 0 8.9ZM21.4 2.6c2 2 2.9 5.9 0 8.9L17.9 15l-1-1 3.5-3.5c1.4-1.4 1.9-4.2-.3-6.4s-5-1.8-6.4-.3l-3.5 3.5-1-1 3.5-3.5c3-3 6.9-2 8.9 0Z"></path><path d="m8.01 14.97 6.93-6.93 1.061 1.06-6.93 6.93z"></path></svg></a></h3>
+<h4 id="-trae"><img src="/images/vendors/trae.webp" alt="TRAE" width="22" height="22" style="display:inline-block;width:22px;height:22px;border-radius:5px;vertical-align:-4px;margin:0 6px 0 0;cursor:default"> TRAE<a href="#-trae" class="heading-anchor-link" aria-label="Link to  TRAE"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M2.6 21.4c2 2 5.9 2.9 8.9 0l3.5-3.5-1-1-3.5 3.5c-1.4 1.4-4.2 1.9-6.4-.3s-1.8-5-.3-6.4l3.5-3.5-1-1-3.5 3.5c-3 3-2 6.9 0 8.9ZM21.4 2.6c2 2 2.9 5.9 0 8.9L17.9 15l-1-1 3.5-3.5c1.4-1.4 1.9-4.2-.3-6.4s-5-1.8-6.4-.3l-3.5 3.5-1-1 3.5-3.5c3-3 6.9-2 8.9 0Z"></path><path d="m8.01 14.97 6.93-6.93 1.061 1.06-6.93 6.93z"></path></svg></a></h4>
+<p><strong>官网</strong>：<a href="https://www.trae.cn/" target="_blank" rel="noopener noreferrer" data-umami-event="outbound-link-click" data-umami-event-url="https://www.trae.cn/">https://www.trae.cn/</a>（国内版） · <a href="https://www.trae.ai/" target="_blank" rel="noopener noreferrer" data-umami-event="outbound-link-click" data-umami-event-url="https://www.trae.ai/">https://www.trae.ai/</a>（国际版）</p>
+
+    <div class="embed-frame" data-src="https://www.trae.cn/" data-host="www.trae.cn" data-name="TRAE" data-height="560" style="min-height:560px">
+      <div class="embed-facade">
+        <div class="embed-head">
+          <img class="embed-logo" src="/images/vendors/trae.webp" alt="" width="36" height="36" loading="lazy">
+          <span class="embed-name">TRAE</span>
+          <span class="embed-host">www.trae.cn</span>
+        </div>
+        <div class="embed-actions">
+          <button class="embed-load" type="button" data-role="load">加载实时预览</button>
+          <a class="embed-open" href="https://www.trae.cn/" target="_blank" rel="noopener noreferrer nofollow">在新窗口打开 ↗</a>
+        </div>
+      </div>
+    </div>
+    
+<ul>
+<li><strong>出品</strong>：字节跳动</li>
+<li><strong>形态</strong>：独立 IDE，国内直连</li>
+<li><strong>免费政策</strong>：手机号注册即可使用基础功能，免费、无时间限制</li>
+<li><strong>亮点</strong>：界面全中文，开箱即用，不需要配置任何本地环境</li>
+</ul>
+<h4 id="-qoder-cn原通义灵码"><img src="/images/vendors/qoder.webp" alt="Qoder" width="22" height="22" style="display:inline-block;width:22px;height:22px;border-radius:5px;vertical-align:-4px;margin:0 6px 0 0;cursor:default"> Qoder CN（原通义灵码）<a href="#-qoder-cn原通义灵码" class="heading-anchor-link" aria-label="Link to  Qoder CN（原通义灵码）"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M2.6 21.4c2 2 5.9 2.9 8.9 0l3.5-3.5-1-1-3.5 3.5c-1.4 1.4-4.2 1.9-6.4-.3s-1.8-5-.3-6.4l3.5-3.5-1-1-3.5 3.5c-3 3-2 6.9 0 8.9ZM21.4 2.6c2 2 2.9 5.9 0 8.9L17.9 15l-1-1 3.5-3.5c1.4-1.4 1.9-4.2-.3-6.4s-5-1.8-6.4-.3l-3.5 3.5-1-1 3.5-3.5c3-3 6.9-2 8.9 0Z"></path><path d="m8.01 14.97 6.93-6.93 1.061 1.06-6.93 6.93z"></path></svg></a></h4>
+<p><strong>官网</strong>：<a href="https://qoder.com/" target="_blank" rel="noopener noreferrer" data-umami-event="outbound-link-click" data-umami-event-url="https://qoder.com/">https://qoder.com/</a></p>
+
+    <div class="embed-frame" data-src="https://qoder.com/" data-host="qoder.com" data-name="Qoder" data-height="560" style="min-height:560px">
+      <div class="embed-facade">
+        <div class="embed-head">
+          <img class="embed-logo" src="/images/vendors/qoder.webp" alt="" width="36" height="36" loading="lazy">
+          <span class="embed-name">Qoder</span>
+          <span class="embed-host">qoder.com</span>
+        </div>
+        <div class="embed-actions">
+          <button class="embed-load" type="button" data-role="load">加载实时预览</button>
+          <a class="embed-open" href="https://qoder.com/" target="_blank" rel="noopener noreferrer nofollow">在新窗口打开 ↗</a>
+        </div>
+      </div>
+    </div>
+    
+<ul>
+<li><strong>出品</strong>：阿里云</li>
+<li><strong>形态</strong>：支持 VS Code、JetBrains 及独立 IDE</li>
+<li><strong>免费政策</strong>：个人社区版免费，含有限的补全次数与体验额度</li>
+<li><strong>亮点</strong>：Java / Go / Spring 生态积累较深，适合服务端与大型项目</li>
+</ul>
+<h4 id="-豆包-marscode"><img src="/images/vendors/marscode.webp" alt="MarsCode" width="22" height="22" style="display:inline-block;width:22px;height:22px;border-radius:5px;vertical-align:-4px;margin:0 6px 0 0;cursor:default"> 豆包 MarsCode<a href="#-豆包-marscode" class="heading-anchor-link" aria-label="Link to  豆包 MarsCode"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M2.6 21.4c2 2 5.9 2.9 8.9 0l3.5-3.5-1-1-3.5 3.5c-1.4 1.4-4.2 1.9-6.4-.3s-1.8-5-.3-6.4l3.5-3.5-1-1-3.5 3.5c-3 3-2 6.9 0 8.9ZM21.4 2.6c2 2 2.9 5.9 0 8.9L17.9 15l-1-1 3.5-3.5c1.4-1.4 1.9-4.2-.3-6.4s-5-1.8-6.4-.3l-3.5 3.5-1-1 3.5-3.5c3-3 6.9-2 8.9 0Z"></path><path d="m8.01 14.97 6.93-6.93 1.061 1.06-6.93 6.93z"></path></svg></a></h4>
+<p><strong>官网</strong>：<a href="https://www.marscode.com/" target="_blank" rel="noopener noreferrer" data-umami-event="outbound-link-click" data-umami-event-url="https://www.marscode.com/">https://www.marscode.com/</a></p>
+
+    <div class="embed-frame" data-src="https://www.marscode.com/" data-host="www.marscode.com" data-name="豆包 MarsCode" data-height="560" style="min-height:560px">
+      <div class="embed-facade">
+        <div class="embed-head">
+          <img class="embed-logo" src="/images/vendors/marscode.webp" alt="" width="36" height="36" loading="lazy">
+          <span class="embed-name">豆包 MarsCode</span>
+          <span class="embed-host">www.marscode.com</span>
+        </div>
+        <div class="embed-actions">
+          <button class="embed-load" type="button" data-role="load">加载实时预览</button>
+          <a class="embed-open" href="https://www.marscode.com/" target="_blank" rel="noopener noreferrer nofollow">在新窗口打开 ↗</a>
+        </div>
+      </div>
+    </div>
+    
+<ul>
+<li><strong>出品</strong>：字节系</li>
+<li><strong>形态</strong>：云端 IDE，浏览器打开即用</li>
+<li><strong>免费政策</strong>：个人免费</li>
+<li><strong>亮点</strong>：支持 100+ 语言，与飞书联动，适合边开会边改代码</li>
+</ul>
+<h3 id="42-ide-插件">4.2 IDE 插件<a href="#42-ide-插件" class="heading-anchor-link" aria-label="Link to 4.2 IDE 插件"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M2.6 21.4c2 2 5.9 2.9 8.9 0l3.5-3.5-1-1-3.5 3.5c-1.4 1.4-4.2 1.9-6.4-.3s-1.8-5-.3-6.4l3.5-3.5-1-1-3.5 3.5c-3 3-2 6.9 0 8.9ZM21.4 2.6c2 2 2.9 5.9 0 8.9L17.9 15l-1-1 3.5-3.5c1.4-1.4 1.9-4.2-.3-6.4s-5-1.8-6.4-.3l-3.5 3.5-1-1 3.5-3.5c3-3 6.9-2 8.9 0Z"></path><path d="m8.01 14.97 6.93-6.93 1.061 1.06-6.93 6.93z"></path></svg></a></h3>
+<h4 id="-腾讯云-codebuddy"><img src="/images/vendors/codebuddy.webp" alt="CodeBuddy" width="22" height="22" style="display:inline-block;width:22px;height:22px;border-radius:5px;vertical-align:-4px;margin:0 6px 0 0;cursor:default"> 腾讯云 CodeBuddy<a href="#-腾讯云-codebuddy" class="heading-anchor-link" aria-label="Link to  腾讯云 CodeBuddy"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M2.6 21.4c2 2 5.9 2.9 8.9 0l3.5-3.5-1-1-3.5 3.5c-1.4 1.4-4.2 1.9-6.4-.3s-1.8-5-.3-6.4l3.5-3.5-1-1-3.5 3.5c-3 3-2 6.9 0 8.9ZM21.4 2.6c2 2 2.9 5.9 0 8.9L17.9 15l-1-1 3.5-3.5c1.4-1.4 1.9-4.2-.3-6.4s-5-1.8-6.4-.3l-3.5 3.5-1-1 3.5-3.5c3-3 6.9-2 8.9 0Z"></path><path d="m8.01 14.97 6.93-6.93 1.061 1.06-6.93 6.93z"></path></svg></a></h4>
+<p><strong>官网</strong>：<a href="https://www.codebuddy.ai/" target="_blank" rel="noopener noreferrer" data-umami-event="outbound-link-click" data-umami-event-url="https://www.codebuddy.ai/">https://www.codebuddy.ai/</a></p>
+
+    <div class="embed-frame" data-src="https://www.codebuddy.ai/" data-host="www.codebuddy.ai" data-name="腾讯云 CodeBuddy" data-height="560" style="min-height:560px">
+      <div class="embed-facade">
+        <div class="embed-head">
+          <img class="embed-logo" src="/images/vendors/codebuddy.webp" alt="" width="36" height="36" loading="lazy">
+          <span class="embed-name">腾讯云 CodeBuddy</span>
+          <span class="embed-host">www.codebuddy.ai</span>
+        </div>
+        <div class="embed-actions">
+          <button class="embed-load" type="button" data-role="load">加载实时预览</button>
+          <a class="embed-open" href="https://www.codebuddy.ai/" target="_blank" rel="noopener noreferrer nofollow">在新窗口打开 ↗</a>
+        </div>
+      </div>
+    </div>
+    
+<ul>
+<li><strong>出品</strong>：腾讯云</li>
+<li><strong>形态</strong>：IDE 插件</li>
+<li><strong>免费政策</strong>：个人版免费</li>
+<li><strong>亮点</strong>：支持 MCP 协议，与腾讯云、TAPD 深度集成，具备 Figma 转代码能力</li>
+</ul>
+<h4 id="-文心快码comate"><img src="/images/vendors/comate.webp" alt="文心快码" width="22" height="22" style="display:inline-block;width:22px;height:22px;border-radius:5px;vertical-align:-4px;margin:0 6px 0 0;cursor:default"> 文心快码（Comate）<a href="#-文心快码comate" class="heading-anchor-link" aria-label="Link to  文心快码（Comate）"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M2.6 21.4c2 2 5.9 2.9 8.9 0l3.5-3.5-1-1-3.5 3.5c-1.4 1.4-4.2 1.9-6.4-.3s-1.8-5-.3-6.4l3.5-3.5-1-1-3.5 3.5c-3 3-2 6.9 0 8.9ZM21.4 2.6c2 2 2.9 5.9 0 8.9L17.9 15l-1-1 3.5-3.5c1.4-1.4 1.9-4.2-.3-6.4s-5-1.8-6.4-.3l-3.5 3.5-1-1 3.5-3.5c3-3 6.9-2 8.9 0Z"></path><path d="m8.01 14.97 6.93-6.93 1.061 1.06-6.93 6.93z"></path></svg></a></h4>
+<p><strong>官网</strong>：<a href="https://comate.baidu.com/" target="_blank" rel="noopener noreferrer" data-umami-event="outbound-link-click" data-umami-event-url="https://comate.baidu.com/">https://comate.baidu.com/</a></p>
+
+    <div class="embed-frame" data-src="https://comate.baidu.com/" data-host="comate.baidu.com" data-name="文心快码 Comate" data-height="560" style="min-height:560px">
+      <div class="embed-facade">
+        <div class="embed-head">
+          <img class="embed-logo" src="/images/vendors/comate.webp" alt="" width="36" height="36" loading="lazy">
+          <span class="embed-name">文心快码 Comate</span>
+          <span class="embed-host">comate.baidu.com</span>
+        </div>
+        <div class="embed-actions">
+          <button class="embed-load" type="button" data-role="load">加载实时预览</button>
+          <a class="embed-open" href="https://comate.baidu.com/" target="_blank" rel="noopener noreferrer nofollow">在新窗口打开 ↗</a>
+        </div>
+      </div>
+    </div>
+    
+<ul>
+<li><strong>出品</strong>：百度</li>
+<li><strong>形态</strong>：IDE 插件</li>
+<li><strong>免费政策</strong>：个人版免费</li>
+<li><strong>亮点</strong>：支持 SPEC 规范驱动，覆盖 200+ 语言</li>
+</ul>
+<h4 id="-华为云-codearts码道"><img src="/images/vendors/codearts.webp" alt="CodeArts 码道" width="22" height="22" style="display:inline-block;width:22px;height:22px;border-radius:5px;vertical-align:-4px;margin:0 6px 0 0;cursor:default"> 华为云 CodeArts（码道）<a href="#-华为云-codearts码道" class="heading-anchor-link" aria-label="Link to  华为云 CodeArts（码道）"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M2.6 21.4c2 2 5.9 2.9 8.9 0l3.5-3.5-1-1-3.5 3.5c-1.4 1.4-4.2 1.9-6.4-.3s-1.8-5-.3-6.4l3.5-3.5-1-1-3.5 3.5c-3 3-2 6.9 0 8.9ZM21.4 2.6c2 2 2.9 5.9 0 8.9L17.9 15l-1-1 3.5-3.5c1.4-1.4 1.9-4.2-.3-6.4s-5-1.8-6.4-.3l-3.5 3.5-1-1 3.5-3.5c3-3 6.9-2 8.9 0Z"></path><path d="m8.01 14.97 6.93-6.93 1.061 1.06-6.93 6.93z"></path></svg></a></h4>
+<p><strong>官网</strong>：<a href="https://codearts.huaweicloud.com/" target="_blank" rel="noopener noreferrer" data-umami-event="outbound-link-click" data-umami-event-url="https://codearts.huaweicloud.com/">https://codearts.huaweicloud.com/</a></p>
+
+    <div class="embed-frame" data-src="https://codearts.huaweicloud.com/" data-host="codearts.huaweicloud.com" data-name="华为云 CodeArts 码道" data-height="560" style="min-height:560px">
+      <div class="embed-facade">
+        <div class="embed-head">
+          <img class="embed-logo" src="/images/vendors/codearts.webp" alt="" width="36" height="36" loading="lazy">
+          <span class="embed-name">华为云 CodeArts 码道</span>
+          <span class="embed-host">codearts.huaweicloud.com</span>
+        </div>
+        <div class="embed-actions">
+          <button class="embed-load" type="button" data-role="load">加载实时预览</button>
+          <a class="embed-open" href="https://codearts.huaweicloud.com/" target="_blank" rel="noopener noreferrer nofollow">在新窗口打开 ↗</a>
+        </div>
+      </div>
+    </div>
+    
+<ul>
+<li><strong>出品</strong>：华为云</li>
+<li><strong>形态</strong>：IDE 插件，支持 JetBrains 与 VS Code</li>
+<li><strong>免费政策</strong>：公测期间面向开发者免费开放</li>
+<li><strong>亮点</strong>：接入 GLM、DeepSeek 等多个模型，可自选”大脑”</li>
+</ul>
+<h4 id="-codegeex"><img src="/images/vendors/codegeex.webp" alt="CodeGeeX" width="22" height="22" style="display:inline-block;width:22px;height:22px;border-radius:5px;vertical-align:-4px;margin:0 6px 0 0;cursor:default"> CodeGeeX<a href="#-codegeex" class="heading-anchor-link" aria-label="Link to  CodeGeeX"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M2.6 21.4c2 2 5.9 2.9 8.9 0l3.5-3.5-1-1-3.5 3.5c-1.4 1.4-4.2 1.9-6.4-.3s-1.8-5-.3-6.4l3.5-3.5-1-1-3.5 3.5c-3 3-2 6.9 0 8.9ZM21.4 2.6c2 2 2.9 5.9 0 8.9L17.9 15l-1-1 3.5-3.5c1.4-1.4 1.9-4.2-.3-6.4s-5-1.8-6.4-.3l-3.5 3.5-1-1 3.5-3.5c3-3 6.9-2 8.9 0Z"></path><path d="m8.01 14.97 6.93-6.93 1.061 1.06-6.93 6.93z"></path></svg></a></h4>
+<p><strong>官网</strong>：<a href="https://codegeex.cn/" target="_blank" rel="noopener noreferrer" data-umami-event="outbound-link-click" data-umami-event-url="https://codegeex.cn/">https://codegeex.cn/</a></p>
+
+    <div class="embed-frame" data-src="https://codegeex.cn/" data-host="codegeex.cn" data-name="CodeGeeX" data-height="560" style="min-height:560px">
+      <div class="embed-facade">
+        <div class="embed-head">
+          <img class="embed-logo" src="/images/vendors/codegeex.webp" alt="" width="36" height="36" loading="lazy">
+          <span class="embed-name">CodeGeeX</span>
+          <span class="embed-host">codegeex.cn</span>
+        </div>
+        <div class="embed-actions">
+          <button class="embed-load" type="button" data-role="load">加载实时预览</button>
+          <a class="embed-open" href="https://codegeex.cn/" target="_blank" rel="noopener noreferrer nofollow">在新窗口打开 ↗</a>
+        </div>
+      </div>
+    </div>
+    
+<ul>
+<li><strong>出品</strong>：智谱 AI</li>
+<li><strong>形态</strong>：IDE 插件</li>
+<li><strong>免费政策</strong>：个人用户完全免费</li>
+<li><strong>亮点</strong>：支持 100+ 语言，提供补全、生成、跨语言翻译、单元测试、Agent 模式等能力</li>
+</ul>
+<h4 id="-fitten-code"><img src="/images/vendors/fitten.webp" alt="Fitten Code" width="22" height="22" style="display:inline-block;width:22px;height:22px;border-radius:5px;vertical-align:-4px;margin:0 6px 0 0;cursor:default"> Fitten Code<a href="#-fitten-code" class="heading-anchor-link" aria-label="Link to  Fitten Code"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M2.6 21.4c2 2 5.9 2.9 8.9 0l3.5-3.5-1-1-3.5 3.5c-1.4 1.4-4.2 1.9-6.4-.3s-1.8-5-.3-6.4l3.5-3.5-1-1-3.5 3.5c-3 3-2 6.9 0 8.9ZM21.4 2.6c2 2 2.9 5.9 0 8.9L17.9 15l-1-1 3.5-3.5c1.4-1.4 1.9-4.2-.3-6.4s-5-1.8-6.4-.3l-3.5 3.5-1-1 3.5-3.5c3-3 6.9-2 8.9 0Z"></path><path d="m8.01 14.97 6.93-6.93 1.061 1.06-6.93 6.93z"></path></svg></a></h4>
+<p><strong>官网</strong>：<a href="https://www.fitten-code.com/" target="_blank" rel="noopener noreferrer" data-umami-event="outbound-link-click" data-umami-event-url="https://www.fitten-code.com/">https://www.fitten-code.com/</a></p>
+<ul>
+<li><strong>出品</strong>：耕智科技</li>
+<li><strong>形态</strong>：IDE 插件，覆盖 VS Code、JetBrains、Visual Studio、Vim</li>
+<li><strong>免费政策</strong>：免费层每日 30 次 AI 调用，超出后当日 AI 功能锁定</li>
+<li><strong>亮点</strong>：对 Vim / Visual Studio 这类小众编辑器同样友好</li>
+</ul>
+<h3 id="43-关于这些内嵌预览">4.3 关于这些内嵌预览<a href="#43-关于这些内嵌预览" class="heading-anchor-link" aria-label="Link to 4.3 关于这些内嵌预览"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M2.6 21.4c2 2 5.9 2.9 8.9 0l3.5-3.5-1-1-3.5 3.5c-1.4 1.4-4.2 1.9-6.4-.3s-1.8-5-.3-6.4l3.5-3.5-1-1-3.5 3.5c-3 3-2 6.9 0 8.9ZM21.4 2.6c2 2 2.9 5.9 0 8.9L17.9 15l-1-1 3.5-3.5c1.4-1.4 1.9-4.2-.3-6.4s-5-1.8-6.4-.3l-3.5 3.5-1-1 3.5-3.5c3-3 6.9-2 8.9 0Z"></path><path d="m8.01 14.97 6.93-6.93 1.061 1.06-6.93 6.93z"></path></svg></a></h3>
+<p>上面每个工具卡片里的页面都是<strong>实时内嵌</strong>，可以直接滚动、点击、操作——不是截图。</p>
+<blockquote class="admonition-note"><span class="admonition-title">内嵌的工作方式</span><ul>
+<li>点击「加载实时预览」后才开始加载对应站点，不点不影响阅读速度</li>
+<li>大多数站点允许被嵌入，直接以原生方式加载</li>
+<li>个别站点（如 CodeGeeX）通过服务端响应头明确拒绝被嵌，此时会自动改用代理方式加载；若浏览器或代理不支持，会提示「在新窗口打开」，不会出现开天窗的白屏</li>
+</ul></blockquote>
+<h2 id="五关于免费的正确姿势">五、关于”免费”的正确姿势<a href="#五关于免费的正确姿势" class="heading-anchor-link" aria-label="Link to 五、关于”免费”的正确姿势"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M2.6 21.4c2 2 5.9 2.9 8.9 0l3.5-3.5-1-1-3.5 3.5c-1.4 1.4-4.2 1.9-6.4-.3s-1.8-5-.3-6.4l3.5-3.5-1-1-3.5 3.5c-3 3-2 6.9 0 8.9ZM21.4 2.6c2 2 2.9 5.9 0 8.9L17.9 15l-1-1 3.5-3.5c1.4-1.4 1.9-4.2-.3-6.4s-5-1.8-6.4-.3l-3.5 3.5-1-1 3.5-3.5c3-3 6.9-2 8.9 0Z"></path><path d="m8.01 14.97 6.93-6.93 1.061 1.06-6.93 6.93z"></path></svg></a></h2>
+<p>国内工具的一个普遍特点是：<strong>个人基础版免费是常态</strong>，但免费层通常在补全次数、Agent 调用次数或高级模型上有限制。</p>
+<blockquote class="admonition-caution"><span class="admonition-title">CAUTION</span><p>也就是说，仅仅只是有限制的”免费”。</p><p>如果真的跟菩萨一样全免费，那厂商也不用活了。</p></blockquote>
+<p>其实主流的编程工具和 IDE 远不止上面提到的这些。在各大厂商的相互竞争下，AI 编程工具这个市场都已快要饱和，因此各大厂商也开始卷一些免费额度，企图夺取市场份额。</p>
+<p>所以，我们可以选择一些有免费额度的 IDE 去薅羊毛。不过各大厂商的免费政策随时会变，需要大家自行判断——也可以通过实时信息看一些博主的推荐，以及免费编程工具的额度情况来薅羊毛。</p>
+<blockquote class="admonition-tip"><span class="admonition-title">TIP</span><p>不过我这里还是要提一嘴：大家如果有能力的话，最好还是进行付费。</p><p>不仅是为了解除额度限制，更是为了用上更好的 AI 模型。如现在比较前沿的 Fable 5.1、GPT6 等，模型能力的提升对于编程编码能力的提升是十分显著的。</p></blockquote>
+<h2 id="六进阶玩法大脑与手脚分离">六、进阶玩法：大脑与手脚分离<a href="#六进阶玩法大脑与手脚分离" class="heading-anchor-link" aria-label="Link to 六、进阶玩法：大脑与手脚分离"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M2.6 21.4c2 2 5.9 2.9 8.9 0l3.5-3.5-1-1-3.5 3.5c-1.4 1.4-4.2 1.9-6.4-.3s-1.8-5-.3-6.4l3.5-3.5-1-1-3.5 3.5c-3 3-2 6.9 0 8.9ZM21.4 2.6c2 2 2.9 5.9 0 8.9L17.9 15l-1-1 3.5-3.5c1.4-1.4 1.9-4.2-.3-6.4s-5-1.8-6.4-.3l-3.5 3.5-1-1 3.5-3.5c3-3 6.9-2 8.9 0Z"></path><path d="m8.01 14.97 6.93-6.93 1.061 1.06-6.93 6.93z"></path></svg></a></h2>
+<p>这里进行补充和扩展一点。</p>
+<p>首先是 Vibe Coding 的”大脑”和”手脚”是<strong>分离的</strong>。也有一些开发者制作了单独的”手脚”工具，例如 DSH（DeepSeek Harness）——你只需要将这个手脚连接到云端大模型就能正常工作。</p>
+<p>换而言之：</p>
+<ul>
+<li><strong>大脑是主要的</strong>。大脑负责思考，没有大脑，整个 Vibe Coding 都是白谈。</li>
+<li>但手脚和大脑<strong>都是可以换的</strong>。你可以选择不同的 AI 大模型，再配上不同的手脚工具来进行 Vibe Coding 编程。</li>
+</ul>
+<p>因此更高级一点的玩法是：你可以在市场和项目中自由寻找好用的 Agent 手脚，再配上自定义选择的云端大模型进行 API 调用大模型——这样你就获得了一个完全自定义 DIY 的好用的编程工具。</p>
+<p>上面推荐的国内厂商编程工具，只是说把大脑和手脚结合了起来，并且给你一些免费额度，让用户开箱即用而已。</p>
+<p>Vibe Coding 的门槛，比很多人想象的低。它不需要你写出多复杂的 Prompt，只要求你能<strong>把想要的东西说清楚</strong>——而这恰好是很多人已经很久没有练习过的能力。</p>
+<p>所以别被”编程”两个字吓住。先挑一个免费额度还没用完的工具，今晚就让 AI 帮你写出第一个能跑起来的小脚本。</p>
+<blockquote class="admonition-tip"><span class="admonition-title">下期预告</span><p>《Agent 与大模型推荐》——我们会挑几套真正能打的生产力组合，做横向实测。</p></blockquote> <!-- Copyright --> <div id="post-copyright"></div> <!-- Tag List --> <div class="mt-12.6 uno-decorative-line"></div>
+        <div class="no-heti mb-10.5 flex flex-wrap gap-x-3 gap-y-3.2"> <a href="/tags/AI 编程/" class="relative inline-block border border-secondary/25 rounded-full px-3.2 py-0.7 ring-secondary/80 transition-[colors,box-shadow] ease-out hover:border-secondary/80 hover:c-primary hover:font-medium hover:ring-0.2 ring-0"> <span class="absolute inset-0 flex items-center justify-center whitespace-nowrap transition-font-weight"> AI 编程 </span> <span class="inline-block font-medium opacity-0" aria-hidden="true"> AI 编程 </span> </a><a href="/tags/Vibe Coding/" class="relative inline-block border border-secondary/25 rounded-full px-3.2 py-0.7 ring-secondary/80 transition-[colors,box-shadow] ease-out hover:border-secondary/80 hover:c-primary hover:font-medium hover:ring-0.2 ring-0"> <span class="absolute inset-0 flex items-center justify-center whitespace-nowrap transition-font-weight"> Vibe Coding </span> <span class="inline-block font-medium opacity-0" aria-hidden="true"> Vibe Coding </span> </a><a href="/tags/开发工具/" class="relative inline-block border border-secondary/25 rounded-full px-3.2 py-0.7 ring-secondary/80 transition-[colors,box-shadow] ease-out hover:border-secondary/80 hover:c-primary hover:font-medium hover:ring-0.2 ring-0"> <span class="absolute inset-0 flex items-center justify-center whitespace-nowrap transition-font-weight"> 开发工具 </span> <span class="inline-block font-medium opacity-0" aria-hidden="true"> 开发工具 </span> </a> </div> <!-- Comment --> <!-- {showDisqus && <Disqus />} --> </div> </article>  </main> <footer class="text-3 leading-1.25em font-navbar" lg="uno-desktop-column bottom-20 text-3.5"> <p>  <a class="highlight-hover py-0.8 transition-colors after:bottom-0.35em hover:c-primary" name="RSS" href="/atom.xml" target="_blank" rel="noopener noreferrer">RSS</a> / <a class="highlight-hover py-0.8 transition-colors after:bottom-0.35em hover:c-primary" name="GitHub" href="https://github.com/666mingqing6/" target="_blank" rel="noopener noreferrer" data-umami-event="outbound-link-click" data-umami-event-url="https://github.com/666mingqing6/">GitHub</a>  </p> <p>
+© 2026 Lumoes </p> <p>
+Powered by <a class="highlight-hover py-0.8 transition-colors after:bottom-0.35em hover:c-primary" href="https://astro.build/" target="_blank" rel="noopener noreferrer" data-umami-event="outbound-link-click" data-umami-event-url="https://astro.build/">Astro</a> and <a class="highlight-hover py-0.8 transition-colors after:bottom-0.35em hover:c-primary" href="https://github.com/radishzzz/astro-theme-retypeset" target="_blank" rel="noopener noreferrer" data-umami-event="outbound-link-click" data-umami-event-url="https://github.com/radishzzz/astro-theme-retypeset">Retypeset</a> </p> </footer> </div> <div class="absolute right-7.25vw top-14.6 flex gap-6 min-[823px]:max-lg:right-[calc(50vw-22rem)] lg:fixed lg:bottom-[min(10.27rem+1.92vw,12rem)] lg:right-[max(5rem,calc(50vw-35rem))] lg:top-auto lg:w-14rem"> <!-- Language Switcher --> <a id="language-switcher" href="/posts/vibe-coding-guide/" class="aspect-square w-4 c-secondary active:scale-90 hover:c-primary" aria-label="Switch website language"> <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+  <path d="M19.18 21.1 12.4 1.89h-1.21L4.52 21.1l-2.53.2v.81h6.37v-.81l-2.83-.2 2.02-5.97h7.58l2.02 5.97-3.34.2v.81H22v-.81l-2.83-.2zM7.85 14.33l3.44-10.21 3.54 10.21z" />
+</svg> </a> <!-- Theme Toggle --> <button id="theme-toggle-button" class="aspect-square w-4 c-secondary active:scale-90 hover:c-primary" data-light-mode="oklch(96% 0.005 298)" data-dark-mode="oklch(22% 0.005 298)" aria-label="Switch light/dark theme"> <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+  <path d="M12.06.61C5.66.61.46 5.71.46 12.11s5.1 11.5 11.6 11.5 11.5-5.1 11.5-11.5S18.46.61 12.06.61m0 21c-6.07 0-10.94-4.2-10.94-9.5s4.87-9.4 10.94-9.4S23 6.91 23 12.21s-4.88 9.4-10.94 9.4" />
+</svg> </button> </div> <!-- Theme Toggle Script >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> --> <script type="module">function a(e){document.documentElement.classList.toggle("dark",e);const t=document.head.querySelector('meta[name="theme-color"]'),n=document.getElementById("theme-toggle-button"),o=n?.dataset.lightMode,m=n?.dataset.darkMode;t&&o&&m&&t.setAttribute("content",e?m:o),localStorage.setItem("theme",e?"dark":"light"),document.dispatchEvent(new Event("theme-changed"))}function c(){const e=!document.documentElement.classList.contains("dark");a(e)}function d(e){if(!(e.target instanceof Element)||!e.target.closest("#theme-toggle-button"))return;if(document.documentElement.classList.contains("reduce-motion")){c();return}document.documentElement.style.setProperty("view-transition-name","theme-toggle-transition"),document.documentElement.setAttribute("data-theme-changing",""),document.startViewTransition(c).finished.then(()=>{document.documentElement.style.removeProperty("view-transition-name"),document.documentElement.removeAttribute("data-theme-changing")})}function i(e){const t=e.matches;a(t)}document.addEventListener("click",d);window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",i);</script> <script type="module">const o={click:"tap",typing:"type"},u={[o.click]:.8,[o.typing]:.4},d=["#language-switcher","#theme-toggle-button"],f=[".el-input__inner",".el-textarea__inner","#wl-nick","#wl-mail","#wl-link","#wl-edit"],h=new Set(["Shift","Control","Alt","Meta","Tab","Escape","CapsLock"]),w=d.join(","),g=f.join(",");function r(){return window.matchMedia("(max-width: 1023px)").matches}function p(){return document.head.querySelector('link[rel="sitemap"]')?.getAttribute("href")?.replace("/sitemap-index.xml","")||""}class y{audioContext=null;audioBuffers={[o.click]:[],[o.typing]:[]};initPromise=null;constructor(){!r()&&"requestIdleCallback"in window&&requestIdleCallback(()=>this.initialize())}async fetchAndCacheSound(t,n){if(!this.audioContext)throw new Error("Audio context not initialized");const i=`${t}_0${n+1}`,s=await(await fetch(`${p()}/sounds/${i}.wav`)).arrayBuffer(),l=await this.audioContext.decodeAudioData(s);this.audioBuffers[t].push(l)}async preloadAllSounds(){const n=Object.values(o).flatMap(i=>Array.from({length:5},(a,s)=>this.fetchAndCacheSound(i,s)));await Promise.allSettled(n)}async initialize(){return this.initPromise??=(async()=>{const t=window.AudioContext||window.webkitAudioContext;this.audioContext=new t,await this.preloadAllSounds()})()}async playSound(t){try{if(await this.initialize(),!this.audioContext)return;this.audioContext.state==="suspended"&&await this.audioContext.resume();const n=this.audioBuffers[t];if(n.length===0)return;const i=this.audioContext.createBufferSource();i.buffer=n[Math.floor(Math.random()*n.length)];const a=this.audioContext.createGain();a.gain.value=u[t],i.connect(a).connect(this.audioContext.destination),i.start(0)}catch(n){console.warn("Sound playback failed:",n)}}}const c=new y;function m(e){r()||!e.target?.closest(w)||c.playSound(o.click)}function C(e){r()||e.ctrlKey||e.altKey||e.metaKey||h.has(e.key)||!e.target?.closest(g)||c.playSound(o.typing)}document.addEventListener("click",m);document.addEventListener("keydown",C);</script> <script type="module">const e=new WeakMap;async function a(o){if(!(o.target instanceof Element))return;const t=o.target.closest(".code-copy-button");if(!t)return;const n=t.parentElement?.querySelector("pre > code")?.textContent;if(!n)return;try{await navigator.clipboard.writeText(n)}catch(i){console.error("[CodeCopyButton] Failed to copy:",i);return}t.classList.add("copied");const c=e.get(t);c&&clearTimeout(c);const r=window.setTimeout(()=>{t.classList.remove("copied"),e.delete(t)},1500);e.set(t,r)}document.addEventListener("click",a);</script> <script type="module">const f=["codegeex.cn"];function p(){const e=window.customElements?.get("x-frame-bypass");if(!e)return!1;try{return document.createElement("iframe",{is:"x-frame-bypass"})instanceof e}catch{return!1}}function l(e){return new Promise((i,n)=>{const s=document.createElement("script");s.src=e,s.onload=()=>i(),s.onerror=()=>n(new Error(`脚本加载失败: ${e}`)),document.head.appendChild(s)})}async function y(){window.customElements?.get("x-frame-bypass")||(window.__ungapCustomElementsBuiltin||(await l("/js/custom-elements-builtin.min.js"),window.__ungapCustomElementsBuiltin=!0),await l("/js/x-frame-bypass.js"))}function h(e){if(e.dataset.active)return;e.dataset.active="1";const i=e.dataset.src,n=e.dataset.host,s=e.dataset.height||"620",d=f.includes(n),o=e.dataset.mode,u=o?o==="bypass":d;(async()=>{let c=!1;if(u)try{await y(),c=p()}catch{c=!1}let t;if(c)t=document.createElement("iframe",{is:"x-frame-bypass"});else if(t=document.createElement("iframe"),d){const r=e.querySelector(".embed-load");r&&(r.textContent="该站点限制内嵌，请在新窗口打开"),delete e.dataset.active;return}t.src=i,t.loading="lazy",t.title=e.dataset.name||n,t.setAttribute("allow","fullscreen"),t.style.width="100%",t.style.height=`${s}px`,e.appendChild(t),e.classList.add("embed-active"),c&&setTimeout(()=>{if(!((t.getAttribute("srcdoc")||"").length>600))if(d){t.remove(),delete e.dataset.active;const a=e.querySelector(".embed-load");a&&(a.textContent="该站点限制内嵌，请在新窗口打开"),e.classList.remove("embed-active")}else{t.remove();const a=document.createElement("iframe");a.src=i,a.loading="lazy",a.title=e.dataset.name||n,a.style.width="100%",a.style.height=`${s}px`,e.appendChild(a)}},2e4)})()}function m(){document.querySelectorAll('.embed-frame [data-role="load"]').forEach(e=>{e.dataset.bound||(e.dataset.bound="1",e.addEventListener("click",()=>h(e.closest(".embed-frame"))))})}document.addEventListener("DOMContentLoaded",m);document.addEventListener("astro:page-load",m);</script> <script type="module">const c=new Intl.NumberFormat("en",{notation:"compact",maximumFractionDigits:1});async function i(r){const e=`github-repo-${r}`;try{const t=sessionStorage.getItem(e);if(t)return JSON.parse(t)}catch{try{sessionStorage.removeItem(e)}catch{}}try{const t=await fetch(`https://api.github.com/repos/${r}`);if(!t.ok)return console.warn(`[GithubCard] Failed to fetch ${r}: ${t.status} ${t.statusText}`),null;const o=await t.json(),n={owner:{avatar_url:o.owner?.avatar_url},description:o.description,stargazers_count:o.stargazers_count,forks_count:o.forks_count,license:o.license?{spdx_id:o.license.spdx_id}:null};try{sessionStorage.setItem(e,JSON.stringify(n))}catch{}return n}catch(t){return console.error(`[GithubCard] Failed to fetch ${r}:`,t),null}}function u(r,e){const t=(n,s)=>{const a=r.querySelector(n);a&&(a.textContent=s)};if(!e){t(".gc-repo-description","Failed to load data");return}const o=r.querySelector(".gc-owner-avatar");o&&e.owner?.avatar_url&&(o.style.backgroundImage=`url(${e.owner.avatar_url})`),t(".gc-repo-description",e.description??"No description"),t(".gc-stars-count",c.format(e.stargazers_count??0)),t(".gc-forks-count",c.format(e.forks_count??0)),t(".gc-license-info",e.license?.spdx_id??"No License")}async function l(r){const e=r.dataset.repo;if(!e)return;const t=await i(e);u(r,t)}function d(){const r=document.querySelectorAll(".gc-container");r.length!==0&&r.forEach(e=>{l(e)})}document.addEventListener("astro:page-load",d);</script> <script type="module" src="/_astro/MediaEmbed.astro_astro_type_script_index_0_lang.zKdz0wRG.js"></script> <script type="module">let e=null,t=null,i=null;function m(){e=document.createElement("div"),e.className="zoom-overlay",e.setAttribute("role","dialog"),e.setAttribute("aria-modal","true"),e.setAttribute("aria-label","Image Viewer"),e.setAttribute("tabindex","-1"),document.body.appendChild(e)}function f(){e=null,t=null,i=null}function p(o){if(!e)return;document.body.style.overflow="hidden";const n=o.getBoundingClientRect();i=o,t=o.cloneNode(),t.className="zoom-img",t.removeAttribute("id"),t.removeAttribute("loading"),t.style.top=`${n.top}px`,t.style.left=`${n.left}px`,t.style.width=`${n.width}px`,t.style.height=`${n.height}px`,document.body.appendChild(t),e.style.display="block",e.focus();const r=window.innerWidth,a=window.innerHeight,d=window.innerWidth<768?1:.8,l=Math.min(r*d/n.width,a*d/n.height),c=(-n.left+(r-n.width)/2)/l,u=(-n.top+(a-n.height)/2)/l;requestAnimationFrame(()=>{e&&(e.style.opacity="1"),t&&(t.style.transform=`scale(${l}) translate3d(${c}px, ${u}px, 0)`)})}function s(){if(!e||!t||!i)return;t.style.transform="",e.style.opacity="0",document.body.style.overflow="";const o=()=>{t&&(t?.remove(),t=null,e&&(e.style.display="none"),i?.focus(),i=null)};t.addEventListener("transitionend",o,{once:!0})}function h(o){if(t){s();return}const n=o.target;n instanceof HTMLImageElement&&(!n.complete||n.width<100||n.height<100||(o.preventDefault(),p(n)))}document.addEventListener("astro:page-load",m);document.addEventListener("astro:before-swap",f);document.addEventListener("click",h);window.addEventListener("resize",s);</script> </body></html>

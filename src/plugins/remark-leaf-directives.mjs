@@ -158,6 +158,51 @@ const embedHandlers = {
     </figure>
     `
   },
+
+  // 实时内嵌预览：点击后按需加载可交互 iframe
+  // 浏览器端由 EmbedFrame 组件决定策略：
+  //   · 目标站点限制内嵌（EMBED_BLOCKED_HOSTS）且支持 X-Frame-Bypass → 走 CORS 代理绕过（方案 B）
+  //   · 其余情况 → 原生 iframe 直连（方案 A）
+  // 用法：::iframe{src="https://example.com/" name="示例" logo="/img.png" height="560"}
+  iframe: (node) => {
+    const escapeHtml = (s) => String(s ?? '')
+      .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;')
+
+    const src = node.attributes?.src ?? ''
+    if (!src) {
+      console.warn('::iframe 缺少 src 属性')
+      return false
+    }
+    let host = ''
+    try {
+      host = new URL(src).host
+    }
+    catch {
+      console.warn(`::iframe src 不是合法 URL: ${src}`)
+      return false
+    }
+
+    const name = node.attributes?.name ?? host
+    const logo = node.attributes?.logo ?? ''
+    const height = Math.min(Math.max(Number.parseInt(node.attributes?.height ?? '620', 10) || 620, 320), 1400)
+    const esc = { src: escapeHtml(src), host: escapeHtml(host), name: escapeHtml(name), logo: escapeHtml(logo) }
+
+    return `
+    <div class="embed-frame" data-src="${esc.src}" data-host="${esc.host}" data-name="${esc.name}" data-height="${height}" style="min-height:${height}px">
+      <div class="embed-facade">
+        <div class="embed-head">
+          ${logo ? `<img class="embed-logo" src="${esc.logo}" alt="" width="36" height="36" loading="lazy">` : ''}
+          <span class="embed-name">${esc.name}</span>
+          <span class="embed-host">${esc.host}</span>
+        </div>
+        <div class="embed-actions">
+          <button class="embed-load" type="button" data-role="load">加载实时预览</button>
+          <a class="embed-open" href="${esc.src}" target="_blank" rel="noopener noreferrer nofollow">在新窗口打开 ↗</a>
+        </div>
+      </div>
+    </div>
+    `
+  },
 }
 
 export function remarkLeafDirectives() {

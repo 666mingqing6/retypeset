@@ -1,0 +1,182 @@
+---
+/**
+ * 实时内嵌预览组件
+ *
+ * 与 ::iframe 指令生成的 .embed-frame 结构配合：
+ *   · 点击「加载实时预览」后才创建 iframe（点击加载，避免一篇文章七八个 iframe 同时加载拖垮首屏）
+ *   · 策略（方案 B 优先、方案 A 兜底）：
+ *       目标站点在 EMBED_BLOCKED_HOSTS 中（服务端明确拒绝被嵌）且浏览器支持
+ *       customized built-in elements → 走 X-Frame-Bypass（CORS 代理绕过，方案 B）
+ *       其余一律原生 iframe 直连（方案 A）
+ *   · 方案 B 不可用（Safari/Edge 无 polyfill、代理全部失败）→ 自动降级方案 A；
+ *     若目标站点同时限制内嵌 → 保留「在新窗口打开」入口，不会开天窗
+ */
+---
+
+<style is:global>
+  .embed-frame {
+    --at-apply: 'my-6 box-border uno-round-border overflow-hidden';
+  }
+  .embed-frame iframe {
+    --at-apply: 'block w-full border-0 bg-white c-black';
+    display: block;
+  }
+  .embed-facade {
+    --at-apply: 'flex flex-col items-center gap-4 px-6 py-10 c-secondary';
+  }
+  .embed-frame.embed-active .embed-facade {
+    --at-apply: 'hidden!';
+  }
+  .embed-head {
+    --at-apply: 'flex items-center gap-2.5';
+  }
+  .embed-logo {
+    --at-apply: 'rounded bg-secondary/10 p-1';
+  }
+  .embed-name {
+    --at-apply: 'font-semibold lg:text-lg';
+  }
+  .embed-host {
+    --at-apply: 'text-sm op-60';
+  }
+  .embed-actions {
+    --at-apply: 'flex items-center gap-4';
+  }
+  .embed-load {
+    --at-apply: 'cursor-pointer uno-round-border border-primary/30 bg-primary/5 px-4 py-2 text-sm c-primary transition-colors ease-out hover:(bg-primary/10)';
+  }
+  .embed-open {
+    --at-apply: 'text-sm underline underline-0.075em underline-offset-0.1em no-heti';
+  }
+</style>
+
+<script>
+  // 服务端明确返回 X-Frame-Options / CSP frame-ancestors 的站点（实测于 2026-11-03）。
+  // 新增站点被拒时往这里加 host 即可自动走方案 B。
+  const EMBED_BLOCKED_HOSTS = ['codegeex.cn']
+
+  // 是否支持 customized built-in elements（Chrome/Firefox 支持；Safari/Edge 原生不支持，
+  // 但若已加载 @ungap/custom-elements-builtin polyfill 则同样支持）
+  function supportsBypass() {
+    const ctor = window.customElements?.get('x-frame-bypass')
+    if (!ctor) return false
+    try {
+      return document.createElement('iframe', { is: 'x-frame-bypass' }) instanceof ctor
+    }
+    catch {
+      return false
+    }
+  }
+
+  function loadScript(src) {
+    return new Promise((resolve, reject) => {
+      const s = document.createElement('script')
+      s.src = src
+      s.onload = () => resolve()
+      s.onerror = () => reject(new Error(`脚本加载失败: ${src}`))
+      document.head.appendChild(s)
+    })
+  }
+
+  async function ensureBypassLoaded() {
+    if (window.customElements?.get('x-frame-bypass')) return
+    // Safari polyfill 必须先于组件定义加载
+    if (!window.__ungapCustomElementsBuiltin) {
+      await loadScript('/js/custom-elements-builtin.min.js')
+      window.__ungapCustomElementsBuiltin = true
+    }
+    // 在不支持 customized built-in elements 的浏览器上 define 可能抛错，交由调用方降级
+    await loadScript('/js/x-frame-bypass.js')
+  }
+
+  function activate(box) {
+    if (box.dataset.active) return
+    box.dataset.active = '1'
+
+    const src = box.dataset.src
+    const host = box.dataset.host
+    const height = box.dataset.height || '620'
+    const blocked = EMBED_BLOCKED_HOSTS.includes(host)
+    const forced = box.dataset.mode // 手动指定 bypass / direct 时跳过自动策略
+    const wantBypass = forced ? forced === 'bypass' : blocked
+
+    const build = async () => {
+      let useBypass = false
+      if (wantBypass) {
+        try {
+          await ensureBypassLoaded()
+          useBypass = supportsBypass()
+        }
+        catch {
+          useBypass = false
+        }
+      }
+
+      let iframe
+      if (useBypass) {
+        iframe = document.createElement('iframe', { is: 'x-frame-bypass' })
+      }
+      else {
+        // 方案 A：原生 iframe（wantBypass 但组件/代理不可用时同样走这里兜底）
+        iframe = document.createElement('iframe')
+        if (blocked) {
+          // 服务端拒绝 + 无法绕过：A 兜底也救不了，直接回退门面，只留外链
+          const tip = box.querySelector('.embed-load')
+          if (tip) tip.textContent = '该站点限制内嵌，请在新窗口打开'
+          delete box.dataset.active
+          return
+        }
+      }
+
+      iframe.src = src
+      iframe.loading = 'lazy'
+      iframe.title = box.dataset.name || host
+      iframe.setAttribute('allow', 'fullscreen')
+      iframe.style.width = '100%'
+      iframe.style.height = `${height}px`
+      box.appendChild(iframe)
+      box.classList.add('embed-active')
+
+      if (useBypass) {
+        // 方案 B 的代理全部失败时，srcdoc 会停留在加载动画，不会报错给上层。
+        // 20 秒后检查：仍未注入真实内容 → 回退。
+        setTimeout(() => {
+          const doc = iframe.getAttribute('srcdoc') || ''
+          if (doc.length > 600) return // 已注入真实页面
+          if (blocked) {
+            // 目标站点拒绝内嵌且绕过失败：恢复门面，只留外链
+            iframe.remove()
+            delete box.dataset.active
+            const tip = box.querySelector('.embed-load')
+            if (tip) tip.textContent = '该站点限制内嵌，请在新窗口打开'
+            box.classList.remove('embed-active')
+          }
+          else {
+            // 方案 A 兜底：换成直连 iframe
+            iframe.remove()
+            const plain = document.createElement('iframe')
+            plain.src = src
+            plain.loading = 'lazy'
+            plain.title = box.dataset.name || host
+            plain.style.width = '100%'
+            plain.style.height = `${height}px`
+            box.appendChild(plain)
+          }
+        }, 20000)
+      }
+    }
+
+    build()
+  }
+
+  function bind() {
+    document.querySelectorAll('.embed-frame [data-role="load"]').forEach((btn) => {
+      if (btn.dataset.bound) return
+      btn.dataset.bound = '1'
+      btn.addEventListener('click', () => activate(btn.closest('.embed-frame')))
+    })
+  }
+
+  document.addEventListener('DOMContentLoaded', bind)
+  document.addEventListener('astro:page-load', bind)
+</script>

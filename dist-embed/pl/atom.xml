@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/feeds/atom-style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://retypeset.pages.dev/pl/</id>
+    <title>Lumoes Blog</title>
+    <updated>2026-11-03T13:30:09.289Z</updated>
+    <generator>Astro-Theme-Retypeset with Feed for Node.js</generator>
+    <author>
+        <name>Lumoes</name>
+        <uri>https://retypeset.pages.dev/</uri>
+    </author>
+    <link rel="alternate" href="https://retypeset.pages.dev/pl/"/>
+    <link rel="self" href="https://retypeset.pages.dev/pl/atom.xml"/>
+    <subtitle>记录思考与文档。</subtitle>
+    <rights>Copyright © 2026 Lumoes</rights>
+</feed>
