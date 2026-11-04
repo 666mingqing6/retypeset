@@ -74,7 +74,7 @@ Vibe Coding（氛围编程）是一种以自然语言描述意图、由 AI 生�
 
 **官网**：<https://www.trae.cn/>（国内版） · <https://www.trae.ai/>（国际版）
 
-::iframe{src="https://www.trae.cn/" name="TRAE" logo="/images/vendors/trae.webp" height="560"}
+![TRAE 官网首页](/images/promo/trae.webp)
 
 - **出品**：字节跳动
 - **形态**：独立 IDE，国内直连
@@ -85,7 +85,7 @@ Vibe Coding（氛围编程）是一种以自然语言描述意图、由 AI 生�
 
 **官网**：<https://qoder.com/>
 
-::iframe{src="https://qoder.com/" name="Qoder" logo="/images/vendors/qoder.webp" height="560"}
+![Qoder 官网首页](/images/promo/qoder.webp)
 
 - **出品**：阿里云
 - **形态**：支持 VS Code、JetBrains 及独立 IDE
@@ -96,7 +96,7 @@ Vibe Coding（氛围编程）是一种以自然语言描述意图、由 AI 生�
 
 **官网**：<https://www.marscode.com/>
 
-::iframe{src="https://www.marscode.com/" name="豆包 MarsCode" logo="/images/vendors/marscode.webp" height="560"}
+![MarsCode 官网首页](/images/promo/marscode.webp)
 
 - **出品**：字节系
 - **形态**：云端 IDE，浏览器打开即用
@@ -109,7 +109,7 @@ Vibe Coding（氛围编程）是一种以自然语言描述意图、由 AI 生�
 
 **官网**：<https://www.codebuddy.ai/>
 
-::iframe{src="https://www.codebuddy.ai/" name="腾讯云 CodeBuddy" logo="/images/vendors/codebuddy.webp" height="560"}
+![CodeBuddy 官网首页](/images/promo/codebuddy.webp)
 
 - **出品**：腾讯云
 - **形态**：IDE 插件
@@ -120,7 +120,7 @@ Vibe Coding（氛围编程）是一种以自然语言描述意图、由 AI 生�
 
 **官网**：<https://comate.baidu.com/>
 
-::iframe{src="https://comate.baidu.com/" name="文心快码 Comate" logo="/images/vendors/comate.webp" height="560"}
+![文心快码官网首页](/images/promo/comate.webp)
 
 - **出品**：百度
 - **形态**：IDE 插件
@@ -131,7 +131,7 @@ Vibe Coding（氛围编程）是一种以自然语言描述意图、由 AI 生�
 
 **官网**：<https://codearts.huaweicloud.com/>
 
-::iframe{src="https://codearts.huaweicloud.com/" name="华为云 CodeArts 码道" logo="/images/vendors/codearts.webp" height="560"}
+![CodeArts 码道官网首页](/images/promo/codearts.webp)
 
 - **出品**：华为云
 - **形态**：IDE 插件，支持 JetBrains 与 VS Code
@@ -142,7 +142,7 @@ Vibe Coding（氛围编程）是一种以自然语言描述意图、由 AI 生�
 
 **官网**：<https://codegeex.cn/>
 
-::iframe{src="https://codegeex.cn/" name="CodeGeeX" logo="/images/vendors/codegeex.webp" height="560"}
+![CodeGeeX 官网首页](/images/promo/codegeex.webp)
 
 - **出品**：智谱 AI
 - **形态**：IDE 插件
@@ -158,14 +158,16 @@ Vibe Coding（氛围编程）是一种以自然语言描述意图、由 AI 生�
 - **免费政策**：免费层每日 30 次 AI 调用，超出后当日 AI 功能锁定
 - **亮点**：对 Vim / Visual Studio 这类小众编辑器同样友好
 
-### 4.3 关于这些内嵌预览
+### 4.3 一览
 
-上面每个工具卡片里的页面都是**实时内嵌**，可以直接滚动、点击、操作——不是截图。
-
-:::note[内嵌的工作方式]
-- 点击「加载实时预览」后才开始加载对应站点，不点不影响阅读速度
-- 大多数站点允许被嵌入，直接以原生方式加载
-- 个别站点（如 CodeGeeX）通过服务端响应头明确拒绝被嵌，此时会自动改用代理方式加载；若浏览器或代理不支持，会提示「在新窗口打开」，不会出现开天窗的白屏
+:::gallery
+![TRAE 官网](/images/promo/trae.webp)
+![Qoder 官网](/images/promo/qoder.webp)
+![MarsCode 官网](/images/promo/marscode.webp)
+![CodeBuddy 官网](/images/promo/codebuddy.webp)
+![文心快码官网](/images/promo/comate.webp)
+![CodeArts 官网](/images/promo/codearts.webp)
+![CodeGeeX 官网](/images/promo/codegeex.webp)
 :::
 
 ## 五、关于"免费"的正确姿势
