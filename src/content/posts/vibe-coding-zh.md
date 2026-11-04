@@ -16,7 +16,7 @@ abbrlink: vibe-coding-guide
 
 ## 一、Vibe Coding 是什么
 
-:::note[一句话定义]
+:::note[定义]
 Vibe Coding（氛围编程）是一种以自然语言描述意图、由 AI 生成并迭代代码的软件开发新范式。它的核心，是让开发者的精力从"逐行敲代码"转向"表达需求与把控方向"。
 
 也就是说，程序员从手敲代码中解放出来，转换成指挥 AI 工作的角色。
@@ -153,16 +153,41 @@ Vibe Coding（氛围编程）是一种以自然语言描述意图、由 AI 生�
 - **免费政策**：个人用户完全免费
 - **亮点**：支持 100+ 语言，提供补全、生成、跨语言翻译、单元测试、Agent 模式等能力
 
-#### <img src="/images/vendors/fitten.webp" alt="Fitten Code" width="22" height="22" style="display:inline-block;width:22px;height:22px;border-radius:5px;vertical-align:-4px;margin:0 6px 0 0;cursor:default" /> Fitten Code
+### 4.3 模型厂商直营：把"大脑"单独买
 
-**官网**：<https://www.fitten-code.com/>
+上面三家（TRAE、Qoder、CodeBuddy）走的是"开箱即用"路线；而模型厂商自己也在做另一件事——把"大脑"单独卖给你，手脚随便你自己配。
 
-- **出品**：耕智科技
-- **形态**：IDE 插件，覆盖 VS Code、JetBrains、Visual Studio、Vim
-- **免费政策**：免费层每日 30 次 AI 调用，超出后当日 AI 功能锁定
-- **亮点**：对 Vim / Visual Studio 这类小众编辑器同样友好
+#### <img src="/images/vendors/zai.webp" alt="Z.ai" width="22" height="22" style="display:inline-block;width:22px;height:22px;border-radius:5px;vertical-align:-4px;margin:0 6px 0 0;cursor:default" /> 智谱 Z.ai
 
-### 4.3 一览
+**官网**：<https://z.ai/>（国际） · <https://open.bigmodel.cn/>（国内开放平台）
+
+![Z.ai 官网首页](/images/promo/zai.webp)
+
+- **出品**：智谱 AI
+- **形态**：模型 API / CLI——GLM Coding Plan 套餐，可接入 Claude Code 等主流编程 CLI
+- **亮点**：GLM 系列主打 agentic coding；上文提到的 CodeGeeX 插件同样出自智谱，可视为同一家的"轻量插件 + 重型模型"双线布局
+
+#### <img src="/images/vendors/kimi.webp" alt="Kimi" width="22" height="22" style="display:inline-block;width:22px;height:22px;border-radius:5px;vertical-align:-4px;margin:0 6px 0 0;cursor:default" /> Kimi（月之暗面）
+
+**官网**：<https://www.kimi.com/> · API 开放平台：<https://platform.kimi.com/>
+
+![Kimi 官网首页](/images/promo/kimi.webp)
+
+- **出品**：月之暗面（Moonshot AI）
+- **形态**：对话助手 + API 开放平台，另有开源 CLI 工具
+- **亮点**：K3.1 Pro 主打复杂编程项目与智能体任务；Kimi K2 系列开源模型在 agentic coding 场景口碑不错
+
+#### <img src="/images/vendors/minimax.webp" alt="MiniMax" width="22" height="22" style="display:inline-block;width:22px;height:22px;border-radius:5px;vertical-align:-4px;margin:0 6px 0 0;cursor:default" /> MiniMax
+
+**官网**：<https://www.minimax.cn/>（国内） · <https://www.minimax.io/>（国际）
+
+![MiniMax 官网首页](/images/promo/minimax.webp)
+
+- **出品**：MiniMax
+- **形态**：模型 API + MiniMax Agent
+- **亮点**：M2.5 主打 agentic 编程；适合把"大脑"单独拎出来自由组合的玩家
+
+### 4.4 一览
 
 :::gallery
 ![TRAE 官网](/images/promo/trae.webp)
@@ -172,6 +197,9 @@ Vibe Coding（氛围编程）是一种以自然语言描述意图、由 AI 生�
 ![文心快码官网](/images/promo/comate.webp)
 ![CodeArts 官网](/images/promo/codearts.webp)
 ![CodeGeeX 官网](/images/promo/codegeex.webp)
+![Z.ai 官网](/images/promo/zai.webp)
+![Kimi 官网](/images/promo/kimi.webp)
+![MiniMax 官网](/images/promo/minimax.webp)
 :::
 
 ## 五、关于"免费"的正确姿势
