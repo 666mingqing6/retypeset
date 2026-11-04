@@ -103,6 +103,10 @@ Vibe Coding（氛围编程）是一种以自然语言描述意图、由 AI 生�
 - **免费政策**：个人免费
 - **亮点**：支持 100+ 语言，与飞书联动，适合边开会边改代码
 
+:::note[品牌动态]
+豆包 MarsCode 的独立 IDE 已并入 Trae 生态：IDE 形态由 Trae 承接，插件版继续以 MarsCode 名义维护，marscode.com 首页现在也直接推广 Trae。也就是说，字节系这条产品线的"大脑+手脚"一体化方案，实际上已经统一到了上面介绍的 TRAE 门下。
+:::
+
 ### 4.2 IDE 插件
 
 #### <img src="/images/vendors/codebuddy.webp" alt="CodeBuddy" width="22" height="22" style="display:inline-block;width:22px;height:22px;border-radius:5px;vertical-align:-4px;margin:0 6px 0 0;cursor:default" /> 腾讯云 CodeBuddy
